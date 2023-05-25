@@ -1,0 +1,50 @@
+{
+	"name": "Exe LinkedIn Beta",
+	"description": "Save info about persons, who like you!",
+	"version": "1.0",
+	"manifest_version": 3,
+	"permissions": [
+		"scripting",
+		"notifications",
+		"alarms",
+		"contextMenus",
+		"tabs",
+		"activeTab",
+		"storage",
+		"webNavigation",
+		"idle",
+		"declarativeContent",
+		"identity", 
+		"cookies"
+	],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_scripts": [
+		{
+			"matches": 
+			[
+				"https://www.linkedin.com/*"
+			],
+			"js": ["script.js"]
+		}
+	],
+	"host_permissions": [
+		"https://www.linkedin.com/*"
+	],
+	"action": {
+		"default_popup": "index.html",
+		"default_title": "Welcome to Exe LinkedIn Beta",
+		"default_icon": {
+			"32": "icon.png"
+		}
+	},
+	"icons": {
+		"16": "icon.png",
+		"48": "icon.png",
+		"128": "icon.png"
+	},
+	"content_security_policy": {
+	    "extension_page":"script-src 'self' 'wasm-unsafe-eval'; object-src 'self'" 
+	}
+}
